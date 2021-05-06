@@ -64,5 +64,7 @@ a.堆排序
 https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/
 https://leetcode-cn.com/problems/kth-largest-element-in-an-array/
 
-b.
+b.查找第K个最大的元素
+不是第K个不同的元素
+https://leetcode-cn.com/problems/kth-largest-element-in-an-array/
 ```

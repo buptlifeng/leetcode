@@ -51,7 +51,8 @@ public class GetLeastNumbers {
         buildHeap(arr, hs);
         for (int i = len - 1; i >= len - k + 1; i--) {
             swap(arr, 0, i);
-            maxHeapify(arr, i, --hs);
+            hs--;
+            maxHeapify(arr, i, hs);
         }
 
         return Arrays.copyOf(arr, k);

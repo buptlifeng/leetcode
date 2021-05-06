@@ -37,10 +37,10 @@ public class FindKthLargest {
 
     private void maxHeapify(int[] nums, int i, int heapSize) {
         int lc = 2 * i + 1, rc = 2 * i + 2, largest = i;
-        if (lc < heapSize && nums[lc] > nums[i]) {
+        if (lc < heapSize && nums[lc] > nums[largest]) {
             largest = lc;
         }
-        if (rc < heapSize && nums[rc] > nums[i]) {
+        if (rc < heapSize && nums[rc] > nums[largest]) {
             largest = rc;
         }
         if (largest != i) {
@@ -108,6 +108,14 @@ public class FindKthLargest {
             };
             // 5
             System.out.println(solution.findKthLargest(nums, 2));
+        }
+
+        {
+            FindKthLargest solution = new FindKthLargest();
+            int[] nums = new int[]{
+                    3, 2, 1, 5, 6, 4
+            };
+            // 5
             System.out.println(solution.findKthLargestWithHeap(nums, 2));
         }
 
@@ -117,8 +125,16 @@ public class FindKthLargest {
                     3, 2, 3, 1, 2, 4, 5, 5, 6
             };
             // 4
-            System.out.println(solution.findKthLargest(nums, 4));
             System.out.println(solution.findKthLargestWithHeap(nums, 4));
+        }
+
+        {
+            FindKthLargest solution = new FindKthLargest();
+            int[] nums = new int[]{
+                    3, 2, 3, 1, 2, 4, 5, 5, 6
+            };
+            // 4
+            System.out.println(solution.findKthLargest(nums, 4));
         }
     }
 
