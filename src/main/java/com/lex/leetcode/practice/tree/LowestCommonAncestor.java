@@ -1,12 +1,14 @@
 package com.lex.leetcode.practice.tree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
  * 中等
+ * ！！！非搜索二叉树！！！
+ * <p>
+ * 树节点的值都不相同
+ * p q肯定都存在
  *
  * @author lifeng
  */
@@ -32,109 +34,37 @@ public class LowestCommonAncestor {
         }
     }
 
-    public TreeNode lowestCommonAncestorTwice(TreeNode root, TreeNode p, TreeNode q) {
-        TreeNode ancestor = null;
-        List<TreeNode> pPath = scanPath(root, p);
-        List<TreeNode> qPath = scanPath(root, q);
-        for (int i = 0; i < pPath.size() && i < qPath.size(); i++) {
-
-            // 因为从根节点开始遍历，所以需要找到最后一个符合要求的parent
-            if (pPath.get(i) == qPath.get(i)) {
-                ancestor = pPath.get(i);
-            } else {
-                break;
-            }
-
-        }
-
-        return ancestor;
-    }
-
-    private List<TreeNode> scanPath(TreeNode root, TreeNode node) {
-        List<TreeNode> path = new ArrayList<>();
-        TreeNode parent = root;
-        while (parent != null) {
-            path.add(parent);
-            if (node.val > parent.val) {
-                parent = parent.right;
-            } else {
-                parent = parent.left;
-            }
-        }
-        return path;
-    }
-
-    /**
-     * 利用二叉搜索树的性质，合理搜索
-     *
-     * @param root
-     * @param p
-     * @param q
-     * @return
-     */
-    public TreeNode lowestCommonAncestorOnce(TreeNode root, TreeNode p, TreeNode q) {
-        TreeNode ancestor = root;
-        while (true) {
-            if (p.val < ancestor.val && q.val < ancestor.val) {
-                ancestor = ancestor.left;
-            } else if (p.val > ancestor.val && q.val > ancestor.val) {
-                ancestor = ancestor.right;
-            } else {
-                break;
-            }
-        }
-        return ancestor;
-
-    }
+    Map<Integer, TreeNode> parent = new HashMap<>();
+    Set<Integer> visited = new HashSet<>();
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-
-        Stack<TreeNode> lParents = new Stack<>();
-        findParent(root, p, lParents);
-
-        Stack<TreeNode> rParents = new Stack<>();
-        findParent(root, q, rParents);
-
-        while (!lParents.isEmpty()) {
-            TreeNode curParent = lParents.pop();
-            for (TreeNode node : rParents) {
-                if (curParent == node) {
-                    return node;
-                }
+        dfs(root);
+        // 标记p的父节点路径
+        while (p != null) {
+            visited.add(p.val);
+            p = parent.get(p.val);
+        }
+        while (q != null) {
+            if (visited.contains(q.val)) {
+                return q;
             }
+            q = parent.get(q.val);
         }
 
-        return root;
+        return null;
     }
 
-    boolean findParent(TreeNode root, TreeNode child, Stack<TreeNode> stack) {
-        if (root == null) {
-            return false;
+    private void dfs(TreeNode node) {
+        if (node.left != null) {
+            parent.put(node.left.val, node);
+            dfs(node.left);
         }
-        stack.push(root);
-        if (root == child) {
-            return true;
+        if (node.right != null) {
+            parent.put(node.right.val, node);
+            dfs(node.right);
         }
-        // child肯定能找到
-
-        if (root.left != null) {
-            boolean inLeft = findParent(root.left, child, stack);
-            if (!inLeft) {
-                stack.pop();
-            } else {
-                return true;
-            }
-        }
-        if (root.right != null) {
-            boolean inRight = findParent(root.right, child, stack);
-            if (!inRight) {
-                stack.pop();
-            } else {
-                return true;
-            }
-        }
-        return false;
     }
+
 
     public static void main(String[] args) {
         LowestCommonAncestor solution = new LowestCommonAncestor();
@@ -157,7 +87,6 @@ public class LowestCommonAncestor {
         n4.left = n7;
         n4.right = n8;
         System.out.println(solution.lowestCommonAncestor(root, n1, n2).val);
-
     }
 
 }

@@ -51,8 +51,7 @@ public class GetLeastNumbers {
         buildHeap(arr, hs);
         for (int i = len - 1; i >= len - k + 1; i--) {
             swap(arr, 0, i);
-            hs--;
-            maxHeapify(arr, i, hs);
+            maxHeapify(arr, 0, --hs);
         }
 
         return Arrays.copyOf(arr, k);
@@ -92,9 +91,18 @@ public class GetLeastNumbers {
                     0, 1, 2, 1
             };
             int[] ans1 = solution.getLeastNumbers(arr, 1);
-            int[] ans2 = solution.getLeastNumbersPriority(arr, 1);
+            // [0]
             System.out.println(ans1);
-            System.out.println(ans2);
+        }
+
+        {
+            GetLeastNumbers solution = new GetLeastNumbers();
+            int[] arr = new int[]{
+                    0, 1, 2, 1
+            };
+            int[] ans1 = solution.getLeastNumbersPriority(arr, 1);
+            // [0]
+            System.out.println(ans1);
         }
 
         {
@@ -104,11 +112,20 @@ public class GetLeastNumbers {
             };
 
             int[] ans1 = solution.getLeastNumbers(arr, 2);
-            int[] ans2 = solution.getLeastNumbersPriority(arr, 2);
+            // [1,2] [2,1]
             System.out.println(ans1);
-            System.out.println(ans2);
         }
 
+        {
+            GetLeastNumbers solution = new GetLeastNumbers();
+            int[] arr = new int[]{
+                    3, 2, 1
+            };
+
+            int[] ans1 = solution.getLeastNumbersPriority(arr, 2);
+            // [1,2] [2,1]
+            System.out.println(ans1);
+        }
     }
 
 }
