@@ -37,7 +37,7 @@ public class LengthOfLTS {
         {
             LengthOfLTS solution = new LengthOfLTS();
             int[] nums = new int[]{
-                    10,9,2,5,3,7,101,18
+                    10, 9, 2, 5, 3, 7, 101, 18
             };
             // 4
             System.out.println(solution.lengthOfLIS(nums));
@@ -46,7 +46,7 @@ public class LengthOfLTS {
         {
             LengthOfLTS solution = new LengthOfLTS();
             int[] nums = new int[]{
-                    0,1,0,3,2,3
+                    0, 1, 0, 3, 2, 3
             };
             // 4
             System.out.println(solution.lengthOfLIS(nums));
@@ -55,7 +55,7 @@ public class LengthOfLTS {
         {
             LengthOfLTS solution = new LengthOfLTS();
             int[] nums = new int[]{
-                    7,7,7,7,7,7,7
+                    7, 7, 7, 7, 7, 7, 7
             };
             // 1
             System.out.println(solution.lengthOfLIS(nums));

@@ -74,6 +74,26 @@ public class ReverseList {
     }
 
     /**
+     * 使用头插法
+     * 每次固定将链表第一个元素挂载到dummy后面，并将当前的元素继续挂载
+     * @param head
+     * @return
+     */
+    public ListNode reverseListByInsertHead(ListNode head){
+        ListNode nh = new ListNode(-1);
+        // 每次固定将链表第一个元素挂载到dummy后面
+        while (head != null){
+            ListNode curNext = head.next, preNext = nh.next;
+            nh.next = head;
+            // 断开链接，避免环
+            head.next = null;
+            nh.next.next = preNext;
+            head = curNext;
+        }
+        return nh.next;
+    }
+
+    /**
      * 迭代写法
      * 注意不要形成环
      * 时间：O(n)
@@ -100,6 +120,13 @@ public class ReverseList {
     }
 
     public static void main(String[] args) {
+        {
+            ReverseList solution = new ReverseList();
+            ListNode head = solution.build(new int[]{1, 2, 3});
+            ListNode nh1 = solution.reverseListByInsertHead(head);
+            System.out.println(nh1);
+        }
+
         {
             ReverseList solution = new ReverseList();
             ListNode head = solution.build(new int[]{1, 2, 3});

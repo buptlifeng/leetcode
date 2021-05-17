@@ -1,5 +1,8 @@
 package com.lex.leetcode.practice.arrays;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/
  * 简单
@@ -57,6 +60,52 @@ public class SpiralOrder {
                 break;
             }
 
+        }
+
+        return ans;
+    }
+
+    public List<Integer> spiralOrderList(int[][] matrix) {
+        List<Integer> ans = new ArrayList<>();
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return ans;
+        }
+
+        int rows = matrix.length, cols = matrix[0].length;
+        int left = 0, right = cols - 1, top = 0, bottom = rows - 1;
+        while (true) {
+
+            // 从左到右
+            for (int i = left; i <= right; i++) {
+                ans.add(matrix[top][i]);
+            }
+            if (++top > bottom) {
+                break;
+            }
+
+            // 从上到下
+            for (int j = top; j <= bottom; j++) {
+                ans.add(matrix[j][right]);
+            }
+            if (--right < left) {
+                break;
+            }
+
+            // 从右到左
+            for (int k = right; k >= left; k--) {
+                ans.add(matrix[bottom][k]);
+            }
+            if (--bottom < top) {
+                break;
+            }
+
+            // 从下到上
+            for (int m = bottom; m >= top; m--) {
+                ans.add(matrix[m][left]);
+            }
+            if (++left > right) {
+                break;
+            }
         }
 
         return ans;
