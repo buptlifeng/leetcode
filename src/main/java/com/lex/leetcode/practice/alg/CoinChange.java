@@ -28,7 +28,9 @@ public class CoinChange {
             dp[i] = max;
         }
         dp[0] = 0;
+        // 计算每一种币值组合 从小币值开始计算，这样后序大的币值可以基于小币值来计算
         for (int i = 1; i < max; i++) {
+            // 计算f(i-coin)，然后不断更新
             for (int coin : coins) {
                 if (i >= coin) {
                     dp[i] = Math.min(dp[i], dp[i - coin] + 1);
