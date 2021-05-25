@@ -13,7 +13,8 @@ https://leetcode-cn.com/problems/house-robber-iii/
 最长回文子串
 https://leetcode-cn.com/problems/longest-palindromic-substring/
 换硬币类问题
-
+https://leetcode-cn.com/problems/coin-change/
+https://leetcode-cn.com/problems/coin-change-2/
 ```
 
 ##### 3.滑动窗口

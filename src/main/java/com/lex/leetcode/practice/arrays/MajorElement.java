@@ -16,7 +16,6 @@ public class MajorElement {
      * @return
      */
     public int majorityElementRecursion(int[] nums) {
-
         return majorityElementRec(nums, 0, nums.length - 1);
     }
 
@@ -45,6 +44,28 @@ public class MajorElement {
             }
         }
         return count;
+    }
+
+    public static void main(String[] args) {
+        {
+            MajorElement me = new MajorElement();
+            int[] nums = new int[]{
+                    3, 2, 3
+            };
+            int no = me.majorityElementRecursion(nums);
+            // 3
+            System.out.println(no);
+        }
+
+        {
+            MajorElement me = new MajorElement();
+            int[] nums = new int[]{
+                    2, 2, 1, 1, 1, 2, 2
+            };
+            int no = me.majorityElementRecursion(nums);
+            // 2
+            System.out.println(no);
+        }
     }
 
 }
