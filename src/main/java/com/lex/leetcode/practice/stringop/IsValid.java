@@ -43,6 +43,7 @@ public class IsValid {
     public static void main(String[] args) {
         {
             IsValid iv = new IsValid();
+            System.out.println(iv.isValid("([)]"));
             System.out.println(iv.isValid("{}"));
             System.out.println(iv.isValid("{}[]"));
             System.out.println(iv.isValid("{}[]()"));

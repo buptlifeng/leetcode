@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
  * <p>
- * middle
+ * 中等
  *
  * @author lifeng
  */

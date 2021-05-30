@@ -80,17 +80,14 @@ public class ReverseList {
      * @return
      */
     public ListNode reverseListByInsertHead(ListNode head){
-        ListNode nh = new ListNode(-1);
-        // 每次固定将链表第一个元素挂载到dummy后面
-        while (head != null){
-            ListNode curNext = head.next, preNext = nh.next;
-            nh.next = head;
-            // 断开链接，避免环
-            head.next = null;
-            nh.next.next = preNext;
+        ListNode dummy = new ListNode(-1);
+        while(head != null){
+            ListNode curHead = dummy.next, curNext = head.next;
+            dummy.next = head;
+            dummy.next.next = curHead;
             head = curNext;
         }
-        return nh.next;
+        return dummy.next;
     }
 
     /**
