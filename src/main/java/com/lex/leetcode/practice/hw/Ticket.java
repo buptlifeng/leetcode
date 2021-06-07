@@ -25,19 +25,24 @@ public class Ticket {
      */
     public int lastTicket(int[] a, int[] b, int n) {
         // 模拟法
-        int total = n * b.length;
+        int blen = b.length;
+        // 如果第一个人都晚于最晚发票时间点到来
+        if(a[0] > b[blen - 1]){
+            return b[blen - 1];
+        }
+        int total = n * blen;
         Map<Integer, Integer> ticketMap = new HashMap<>();
-        for (int i = 0; i < b.length; i++) {
+        for (int i = 0; i < blen; i++) {
             ticketMap.put(b[i], n);
         }
 
         // 默认值：早于第一个人到达时间即可
         int ans = a[0] - 1;
-        int k = 0;
-        for (int j = 0; j < a.length && k < b.length; j++) {
+        int k = 0, j = 0;
+        for (; j < a.length && k < blen; j++) {
             // 计算当前时刻是否大于派发时刻
             int comeTime = a[j];
-            for (; k < b.length; k++) {
+            for (; k < blen; k++) {
                 int cc = ticketMap.getOrDefault(b[k], 0);
                 // 来晚了，这一轮没票，看下一轮
                 if (comeTime > b[k] || cc == 0) {
@@ -57,11 +62,23 @@ public class Ticket {
                 break;
             }
         }
-        // 票数富余
+        // 此处分别对应2种情况：一种是票数富余，一种是观众都来晚了（没票）
         return total > 0 ? b[k] : ans;
     }
 
     public static void main(String[] args) {
+
+        {
+            Ticket ticket = new Ticket();
+            int[] a = new int[]{
+                    11, 12, 15, 15, 15
+            };
+            int[] b = new int[]{
+                    6, 8
+            };
+            // 8
+            System.out.println(ticket.lastTicket(a, b, 2));
+        }
 
         {
             Ticket ticket = new Ticket();
@@ -85,18 +102,6 @@ public class Ticket {
             };
             // 18 票数足够
             System.out.println(ticket.lastTicket(a, b, 3));
-        }
-
-        {
-            Ticket ticket = new Ticket();
-            int[] a = new int[]{
-                    11, 12, 15, 15, 15
-            };
-            int[] b = new int[]{
-                    6, 8
-            };
-            // 10
-            System.out.println(ticket.lastTicket(a, b, 2));
         }
 
         {
