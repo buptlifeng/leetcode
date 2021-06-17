@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * 排队领票
- * 1.时间点的票，余票废弃
+ * 1.只能领取该时间点的票，该时间点没有领完，余票废弃
  * 2.先到人可以排队等候放票时间点发票
  * 3.1人1票
  * 4.本轮没领到票，可以等下一轮
@@ -27,7 +27,7 @@ public class Ticket {
         // 模拟法
         int blen = b.length;
         // 如果第一个人都晚于最晚发票时间点到来
-        if(a[0] > b[blen - 1]){
+        if (a[0] > b[blen - 1]) {
             return b[blen - 1];
         }
         int total = n * blen;
