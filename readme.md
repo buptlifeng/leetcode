@@ -71,3 +71,18 @@ b.查找第K个最大的元素
 不是第K个不同的元素
 https://leetcode-cn.com/problems/kth-largest-element-in-an-array/
 ```
+
+##### 9.前缀和
+```
+1.525. 连续数组
+https://leetcode-cn.com/problems/contiguous-array/
+其他：
+连续的子数组和
+
+元素和为目标值的子矩阵数量
+
+和为k的子数组
+
+每个元音包含最长的子字符串
+
+```
