@@ -34,8 +34,19 @@ public class ConstructFromPrePost {
         }
     }
 
+    /**
+     * 先序：根左右
+     * 后序：左右根
+     * 如果只有根的时候，可以当左子树，也可以当右子树
+     *
+     * 这种类型的题，按照树遍历的定义，采用递归处理即可
+     *
+     * @param pre
+     * @param post
+     * @return
+     */
     public TreeNode constructFromPrePost(int[] pre, int[] post) {
-
+        
         return null;
     }
 
