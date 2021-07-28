@@ -59,6 +59,8 @@ https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
 ```
 利用rand7生成rand10
 https://leetcode-cn.com/problems/implement-rand10-using-rand7
+967. 连续差相同的数字
+https://leetcode-cn.com/problems/numbers-with-same-consecutive-differences/
 ```
 
 ##### 8.基础
