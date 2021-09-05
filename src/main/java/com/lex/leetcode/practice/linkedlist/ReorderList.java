@@ -85,23 +85,8 @@ public class ReorderList {
      * @param head
      */
     public void reorderListOnO1(ListNode head) {
-        int len = 0;
-        ListNode halfNode = head;
-        while (halfNode != null) {
-            len++;
-            halfNode = halfNode.next;
-        }
-        int mid = (len - 1) / 2;
-        halfNode = head;
-        while (mid > 0) {
-            halfNode = halfNode.next;
-            mid--;
-        }
-        // 找到后半部分链表
-        ListNode p = halfNode.next;
-        halfNode.next = null;
-        // 逆序后的后半部分新表头
-        ListNode halfHead = reverse(p);
+        ListNode halfHead = findMiddle(head);
+        halfHead = reverse(halfHead);
 
         // 准备合并2个链表
         ListNode nh = head;
@@ -115,6 +100,16 @@ public class ReorderList {
             halfHead = halfNext;
             nh = next;
         }
+    }
+
+    private ListNode findMiddle(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast.next != null && fast.next.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
     }
 
     public ListNode reverse(ListNode head) {

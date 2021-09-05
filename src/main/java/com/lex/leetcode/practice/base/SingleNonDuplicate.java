@@ -20,9 +20,11 @@ public class SingleNonDuplicate {
             boolean numOfPartEven = (high - mid) % 2 == 0;
             // 包含只出现一次元素的区间，总长度肯定是奇数
             if (nums[mid] == nums[mid + 1]) {
+                // 相同元素在右侧，右侧包含偶数个元素，删除相同元素后，还剩奇数个，所以左指针右移2个
                 if (numOfPartEven) {
                     low = mid + 2;
                 } else {
+                    // 参考上面说法，右指针左移一个
                     high = mid - 1;
                 }
             } else if (nums[mid] == nums[mid - 1]) {

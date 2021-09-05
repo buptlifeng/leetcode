@@ -25,6 +25,8 @@ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
 https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray
 存在重复元素 III
 https://leetcode-cn.com/problems/contains-duplicate-iii/
+滑动窗口里的最大值
+https://leetcode-cn.com/problems/sliding-window-maximum/
 ```
 
 ##### 4.链表操作类
