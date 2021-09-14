@@ -15,6 +15,8 @@ https://leetcode-cn.com/problems/longest-palindromic-substring/
 换硬币类问题
 https://leetcode-cn.com/problems/coin-change/
 https://leetcode-cn.com/problems/coin-change-2/
+最长有效括号对-三种解法
+https://leetcode-cn.com/problems/longest-valid-parentheses/
 ```
 
 ##### 3.滑动窗口
